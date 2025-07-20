@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(md frontend)",
+      "Bash(md backend)",
+      "Bash(md agents)",
+      "Bash(md database)",
+      "Bash(md docs)",
+      "Bash(docker-compose up:*)",
+      "Bash(docker-compose:*)",
+      "Bash(docker:*)"
+    ],
+    "deny": []
+  }
+}

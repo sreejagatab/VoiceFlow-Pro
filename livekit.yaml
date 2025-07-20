@@ -1,0 +1,41 @@
+# LiveKit Server Configuration for VoiceFlow Pro
+
+port: 7880
+bind_addresses:
+  - ""
+
+rtc:
+  tcp_port: 7881
+  port_range_start: 50000
+  port_range_end: 60000
+  use_external_ip: true
+  
+redis:
+  address: redis:6379
+  
+room:
+  auto_create: true
+  empty_timeout: 300  # 5 minutes in seconds
+  departure_timeout: 20
+  
+keys:
+  # These should be set via environment variables in production
+  APIkey123: secret456
+  
+logging:
+  level: info
+  
+webhook:
+  # Optional: Configure webhooks for room events
+  api_key: APIkey123
+  urls:
+    - http://backend:8000/api/webhook/livekit
+  
+# Audio/Video settings optimized for voice
+# audio:
+#   # Enable audio processing for better quality
+#   active_level: 50
+#   min_percentile: 50
+  
+# Development settings
+development: true

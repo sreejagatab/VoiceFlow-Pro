@@ -1,0 +1,36 @@
+{
+  "name": "voiceflow-pro",
+  "version": "1.0.0",
+  "description": "Business Automation Voice Agent with LiveKit and AssemblyAI Universal-Streaming",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "agents"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:agents\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:agents": "cd agents && npm run dev",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "install:all": "npm install && npm run install:frontend && npm run install:backend && npm run install:agents",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && npm install",
+    "install:agents": "cd agents && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "voice-agent",
+    "livekit",
+    "assemblyai",
+    "business-automation",
+    "webrtc"
+  ],
+  "author": "VoiceFlow Pro Team",
+  "license": "MIT"
+}

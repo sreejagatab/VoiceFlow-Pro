@@ -1,0 +1,18 @@
+/* LiveKit component overrides */
+.lk-room-container {
+  background: transparent;
+}
+
+.lk-audio-track {
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Custom voice agent styles */
+.voice-agent-container {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+}
