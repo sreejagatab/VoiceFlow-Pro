@@ -13,6 +13,7 @@
 
 VoiceFlow Pro is a comprehensive intelligent voice agent platform that automates complex business workflows through natural conversation. Built with enterprise-grade architecture featuring sub-400ms latency using LiveKit WebRTC and AssemblyAI's Universal-Streaming technology, advanced sentiment analysis, seamless human escalation, and real-time analytics.
 
+<<<<<<< HEAD
 ## 📊 **VERIFIED CASE STUDIES** ✅
 
 ### 💼 **TechCorp Inc. - Sales Lead Qualification**
@@ -63,6 +64,10 @@ We've recorded a comprehensive demo showing the live system with real API keys a
 - **System**: Production-ready with real API keys
 - **Performance**: Verified 19.7ms average response time
 
+=======
+![20250720_1008_VoiceFlow Pro Automation_simple_compose_01k0khdgsceqerha83m5c6r76h](https://github.com/user-attachments/assets/d85c960c-0382-4176-8c3e-8b8285289ad6)
+---
+>>>>>>> 7f3348ceab87ef05975143829f5752c643aa5631
 ## ✨ Key Features
 
 ### 🎯 **Core Voice Capabilities**
@@ -728,5 +733,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ✅ **Production-Ready** with comprehensive testing, deployment, and monitoring  
 
 **Demonstrating how Universal-Streaming enables next-generation business automation with human-like conversation intelligence and enterprise reliability.**
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7f3348ceab87ef05975143829f5752c643aa5631
