@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "python main.py",
-    "install": "pip install -r requirements.txt",
     "lint": "black . && flake8 .",
     "type-check": "mypy ."
   },
