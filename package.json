@@ -3,24 +3,11 @@
   "version": "1.0.0",
   "description": "Business Automation Voice Agent with LiveKit and AssemblyAI Universal-Streaming",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "backend",
-    "agents"
-  ],
+
   "scripts": {
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:agents\" \"npm run serve:landing\"",
-    "serve:landing": "node serve-landing.js",
-    "dev:frontend": "cd frontend && npm run dev",
-    "dev:backend": "cd backend && npm run dev",
-    "dev:agents": "cd agents && npm run dev",
-    "build": "echo 'Static site - no build needed'",
-    "build:frontend": "echo 'Frontend build skipped for static deployment'",
-    "build:backend": "echo 'Backend build skipped for static deployment'",
-    "install:all": "npm install && npm run install:frontend && npm run install:backend && npm run install:agents",
-    "install:frontend": "cd frontend && npm install",
-    "install:backend": "cd backend && npm install",
-    "install:agents": "cd agents && npm install"
+    "build": "echo 'Static landing page - no build needed'",
+    "start": "echo 'Static site deployed'",
+    "dev": "node serve-landing.js"
   },
   "dependencies": {
     "express": "^4.21.2"

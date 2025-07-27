@@ -1,25 +1,11 @@
 {
   "version": 2,
   "name": "voiceflow-pro",
+  "buildCommand": "echo 'Static site - no build needed'",
+  "outputDirectory": ".",
   "builds": [
     {
-      "src": "landing-page.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "landing-styles.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "VoiceFlow Pro - Business Automation Voice Agent - Google Chrome 2025-07-27 16-23-50.mp4",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "case-studies/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.md",
+      "src": "**",
       "use": "@vercel/static"
     }
   ],
