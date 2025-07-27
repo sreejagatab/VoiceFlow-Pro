@@ -9,12 +9,7 @@
     "start": "echo 'Static site deployed'",
     "dev": "node serve-landing.js"
   },
-  "dependencies": {
-    "express": "^4.21.2"
-  },
-  "devDependencies": {
-    "concurrently": "^8.2.2"
-  },
+
   "keywords": [
     "voice-agent",
     "livekit",
@@ -22,6 +17,10 @@
     "business-automation",
     "webrtc"
   ],
-  "author": "VoiceFlow Pro Team",
-  "license": "MIT"
+  "author": "Jagatab.UK",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sreejagatab/VoiceFlow-Pro-demo"
+  }
 }

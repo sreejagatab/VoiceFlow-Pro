@@ -1,14 +1,6 @@
 {
   "version": 2,
-  "name": "voiceflow-pro",
-  "buildCommand": "echo 'Static site - no build needed'",
-  "outputDirectory": ".",
-  "builds": [
-    {
-      "src": "**",
-      "use": "@vercel/static"
-    }
-  ],
+  "name": "voiceflow-pro"
   "routes": [
     {
       "src": "/",
