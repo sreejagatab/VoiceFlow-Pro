@@ -50,8 +50,8 @@ services:
       - NODE_ENV=development
       - DATABASE_URL=postgresql://postgres:postgres123@postgres:5432/voiceflow_pro
       - LIVEKIT_URL=wss://voiceflow-pro-1ekj4ijn.livekit.cloud
-      - LIVEKIT_API_KEY=APId9WxeMMav59t
-      - LIVEKIT_API_SECRET=m4wEeLiBTGeAiRcyZl22NtTeMzPetKQieYZOWHqIuvFC
+      - LIVEKIT_API_KEY=xyz
+      - LIVEKIT_API_SECRET=xyz
       - REDIS_URL=redis://redis:6379
     depends_on:
       - postgres
@@ -87,11 +87,10 @@ services:
       dockerfile: Dockerfile
     environment:
       - LIVEKIT_URL=wss://voiceflow-pro-1ekj4ijn.livekit.cloud
-      - LIVEKIT_API_KEY=APId9WxeMMav59t
-      - LIVEKIT_API_SECRET=m4wEeLiBTGeAiRcyZl22NtTeMzPetKQieYZOWHqIuvFC
-      - ASSEMBLYAI_API_KEY=647ad0e892ef49179237bed4f62935b8
-      - OPENAI_API_KEY=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
-      - ELEVENLABS_API_KEY=sk_4354046f7e60b00a8b803546dda50aaa83383c87116e4b11
+      - LIVEKIT_API_KEY=xyz
+      - LIVEKIT_API_SECRET=xyz
+      - ASSEMBLYAI_API_KEY=xyz
+      - OPENAI_API_KEY=xyz      - ELEVENLABS_API_KEY=xyz
     depends_on:
       - postgres
       - redis

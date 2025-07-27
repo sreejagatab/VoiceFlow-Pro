@@ -56,8 +56,8 @@
 
 ### **API Keys Configured**
 - ✅ **OpenAI GPT-4**: `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`
-- ✅ **AssemblyAI**: `647ad0e892ef49179237bed4f62935b8`
-- ✅ **ElevenLabs**: `sk_4354046f7e60b00a8b803546dda50aaa83383c87116e4b11`
+- ✅ **AssemblyAI**: `xyz`
+- ✅ **ElevenLabs**: `xyz`
 - ✅ **LiveKit Cloud**: `wss://voiceflow-pro-1ekj4ijn.livekit.cloud`
 
 ### **System Health Verification**
