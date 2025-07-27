@@ -1,26 +1,36 @@
 {
   "version": 2,
-  "name": "voiceflow-pro"
+  "name": "voiceflow-pro",
+  "builds": [
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
   "routes": [
     {
       "src": "/",
-      "dest": "/landing-page.html"
+      "dest": "/public/index.html"
     },
     {
-      "src": "/app",
-      "dest": "/frontend/dist/index.html"
+      "src": "/landing-page.html",
+      "dest": "/public/landing-page.html"
     },
     {
       "src": "/demo-video",
-      "dest": "/VoiceFlow Pro - Business Automation Voice Agent - Google Chrome 2025-07-27 16-23-50.mp4"
+      "dest": "/public/VoiceFlow Pro - Business Automation Voice Agent - Google Chrome 2025-07-27 16-23-50.mp4"
+    },
+    {
+      "src": "/ASSEMBLYAI-SUBMISSION.md",
+      "dest": "/public/ASSEMBLYAI-SUBMISSION.md"
     },
     {
       "src": "/case-studies/(.*)",
-      "dest": "/case-studies/$1"
+      "dest": "/public/case-studies/$1"
     },
     {
-      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|mp4|pdf|md))",
-      "dest": "/$1"
+      "src": "/(.*)",
+      "dest": "/public/$1"
     }
   ],
   "headers": [
