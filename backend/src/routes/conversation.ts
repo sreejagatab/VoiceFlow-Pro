@@ -288,4 +288,41 @@ router.get('/summary', async (req, res) => {
   }
 })
 
+// Handle conversation actions (quick actions from frontend)
+router.post('/action', async (req, res) => {
+  try {
+    const { roomId, actionType, timestamp, context } = req.body;
+
+    // Log the action
+    logger.info(`Action triggered: ${actionType} for room ${roomId}`);
+
+    // In a real implementation, this would:
+    // 1. Save the action to database
+    // 2. Trigger business logic (CRM updates, calendar events, etc.)
+    // 3. Send notifications
+    // 4. Update conversation state
+
+    const actionResult = {
+      id: `action_${Date.now()}`,
+      roomId,
+      actionType,
+      timestamp,
+      context,
+      status: 'completed',
+      result: {
+        success: true,
+        message: `${actionType} completed successfully`
+      }
+    };
+
+    res.json(actionResult);
+  } catch (error) {
+    logger.error('Action processing error:', error);
+    res.status(500).json({
+      error: 'Action processing failed',
+      message: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
 export { router as conversationRoutes }

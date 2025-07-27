@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres123
     ports:
-      - "5432:5432"
+      - "5434:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
@@ -20,7 +20,7 @@ services:
   redis:
     image: redis:7-alpine
     ports:
-      - "6379:6379"
+      - "6381:6379"
     networks:
       - voiceflow-network
 
@@ -49,12 +49,13 @@ services:
     environment:
       - NODE_ENV=development
       - DATABASE_URL=postgresql://postgres:postgres123@postgres:5432/voiceflow_pro
-      - LIVEKIT_URL=ws://livekit:7880
+      - LIVEKIT_URL=wss://voiceflow-pro-1ekj4ijn.livekit.cloud
+      - LIVEKIT_API_KEY=APId9WxeMMav59t
+      - LIVEKIT_API_SECRET=m4wEeLiBTGeAiRcyZl22NtTeMzPetKQieYZOWHqIuvFC
       - REDIS_URL=redis://redis:6379
     depends_on:
       - postgres
       - redis
-      - livekit
     volumes:
       - ./backend:/app
       - /app/node_modules
@@ -70,7 +71,7 @@ services:
       - "3000:3000"
     environment:
       - VITE_API_URL=http://localhost:8000
-      - VITE_LIVEKIT_URL=ws://localhost:7880
+      - VITE_LIVEKIT_URL=wss://voiceflow-pro-1ekj4ijn.livekit.cloud
     depends_on:
       - backend
     volumes:
@@ -85,14 +86,15 @@ services:
       context: ./agents
       dockerfile: Dockerfile
     environment:
-      - LIVEKIT_URL=ws://livekit:7880
-      - LIVEKIT_API_KEY=${LIVEKIT_API_KEY}
-      - LIVEKIT_SECRET_KEY=${LIVEKIT_SECRET_KEY}
-      - ASSEMBLYAI_API_KEY=${ASSEMBLYAI_API_KEY}
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY}
+      - LIVEKIT_URL=wss://voiceflow-pro-1ekj4ijn.livekit.cloud
+      - LIVEKIT_API_KEY=APId9WxeMMav59t
+      - LIVEKIT_API_SECRET=m4wEeLiBTGeAiRcyZl22NtTeMzPetKQieYZOWHqIuvFC
+      - ASSEMBLYAI_API_KEY=647ad0e892ef49179237bed4f62935b8
+      - OPENAI_API_KEY=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
+      - ELEVENLABS_API_KEY=sk_4354046f7e60b00a8b803546dda50aaa83383c87116e4b11
     depends_on:
-      - livekit
+      - postgres
+      - redis
     volumes:
       - ./agents:/app
     networks:

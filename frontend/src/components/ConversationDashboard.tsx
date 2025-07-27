@@ -44,6 +44,9 @@ export default function ConversationDashboard() {
   const [agentResponse, setAgentResponse] = useState('')
   const [sentimentScore, setSentimentScore] = useState(0)
   const [leadScore, setLeadScore] = useState(0)
+  const [actionLoading, setActionLoading] = useState<string | null>(null)
+
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
   useEffect(() => {
     if (connectionState === ConnectionState.Connected) {
@@ -58,13 +61,37 @@ export default function ConversationDashboard() {
   useEffect(() => {
     if (isCallActive) {
       const interval = setInterval(() => {
-        // Simulate receiving conversation updates
-        // In real implementation, this would be triggered by actual voice data
+        // Simulate live metrics updates
+        setSentimentScore(prev => {
+          const change = (Math.random() - 0.5) * 0.1
+          return Math.max(-1, Math.min(1, prev + change))
+        })
+
+        setLeadScore(prev => {
+          if (currentScenario === 'sales') {
+            return Math.min(prev + Math.random() * 2, 100)
+          }
+          return prev
+        })
+
+        // Simulate live transcript updates
+        if (Math.random() > 0.95) {
+          const sampleTranscripts = [
+            "I'm interested in your enterprise solutions...",
+            "What pricing options do you have?",
+            "Can you tell me more about the features?",
+            "How does this integrate with our existing systems?",
+            "What's the implementation timeline?"
+          ]
+          setLiveTranscript(sampleTranscripts[Math.floor(Math.random() * sampleTranscripts.length)])
+
+          setTimeout(() => setLiveTranscript(''), 3000)
+        }
       }, 1000)
 
       return () => clearInterval(interval)
     }
-  }, [isCallActive])
+  }, [isCallActive, currentScenario])
 
   const toggleMute = () => {
     if (room) {
@@ -78,6 +105,68 @@ export default function ConversationDashboard() {
       room.disconnect()
     }
     setIsCallActive(false)
+  }
+
+  const handleQuickAction = async (actionType: string) => {
+    setActionLoading(actionType)
+
+    try {
+      const roomId = room?.name || 'demo-room-' + Date.now()
+
+      // Simulate API call to backend
+      const response = await fetch(`${API_URL}/api/conversation/action`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          roomId,
+          actionType,
+          timestamp: new Date().toISOString(),
+          context: {
+            scenario: currentScenario,
+            leadScore,
+            sentimentScore
+          }
+        })
+      })
+
+      if (response.ok) {
+        // Add action to business actions list
+        const newAction: BusinessAction = {
+          type: actionType,
+          data: { success: true },
+          timestamp: new Date().toISOString()
+        }
+        setBusinessActions(prev => [...prev, newAction])
+
+        // Update agent response based on action
+        switch (actionType) {
+          case 'schedule_demo':
+            setAgentResponse('Great! I\'ve scheduled a demo for you. You\'ll receive a calendar invitation shortly.')
+            setCurrentScenario('scheduling')
+            break
+          case 'create_lead':
+            setAgentResponse('Perfect! I\'ve created a lead record with your information. Our sales team will follow up within 24 hours.')
+            setCurrentScenario('sales')
+            setLeadScore(Math.min(leadScore + 20, 100))
+            break
+          case 'escalate_human':
+            setAgentResponse('I\'m connecting you with a human specialist who can better assist you. Please hold for just a moment.')
+            setCurrentScenario('escalation')
+            break
+          case 'send_followup':
+            setAgentResponse('I\'ve scheduled a follow-up for you. You\'ll receive an email summary and next steps.')
+            setCurrentScenario('follow_up')
+            break
+        }
+      }
+    } catch (error) {
+      console.error('Action failed:', error)
+      setAgentResponse('I apologize, but I encountered an issue processing that request. Let me try a different approach.')
+    } finally {
+      setActionLoading(null)
+    }
   }
 
   const getScenarioColor = (scenario: string) => {
@@ -270,17 +359,49 @@ export default function ConversationDashboard() {
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
           
           <div className="space-y-2">
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors">
-              Schedule Demo
+            <button
+              onClick={() => handleQuickAction('schedule_demo')}
+              disabled={actionLoading === 'schedule_demo'}
+              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center"
+            >
+              {actionLoading === 'schedule_demo' ? (
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+              ) : (
+                'Schedule Demo'
+              )}
             </button>
-            <button className="w-full bg-green-600 hover:bg-green-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors">
-              Create Lead
+            <button
+              onClick={() => handleQuickAction('create_lead')}
+              disabled={actionLoading === 'create_lead'}
+              className="w-full bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center"
+            >
+              {actionLoading === 'create_lead' ? (
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+              ) : (
+                'Create Lead'
+              )}
             </button>
-            <button className="w-full bg-red-600 hover:bg-red-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors">
-              Escalate to Human
+            <button
+              onClick={() => handleQuickAction('escalate_human')}
+              disabled={actionLoading === 'escalate_human'}
+              className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center"
+            >
+              {actionLoading === 'escalate_human' ? (
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+              ) : (
+                'Escalate to Human'
+              )}
             </button>
-            <button className="w-full bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors">
-              Send Follow-up
+            <button
+              onClick={() => handleQuickAction('send_followup')}
+              disabled={actionLoading === 'send_followup'}
+              className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center"
+            >
+              {actionLoading === 'send_followup' ? (
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+              ) : (
+                'Send Follow-up'
+              )}
             </button>
           </div>
         </div>

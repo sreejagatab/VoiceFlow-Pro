@@ -1,0 +1,30 @@
+{
+  "name": "voiceflow-pro-case-studies",
+  "version": "1.0.0",
+  "description": "Case study test runner for VoiceFlow Pro",
+  "main": "test-runner.js",
+  "scripts": {
+    "test": "node test-runner.js",
+    "test:sales": "node test-runner.js --category=sales",
+    "test:support": "node test-runner.js --category=support",
+    "test:scheduling": "node test-runner.js --category=scheduling",
+    "report": "node generate-report.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "fs-extra": "^11.1.1",
+    "moment": "^2.29.4"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "keywords": [
+    "voiceflow",
+    "voice-ai",
+    "case-studies",
+    "testing",
+    "automation"
+  ],
+  "author": "VoiceFlow Pro Team",
+  "license": "MIT"
+}
