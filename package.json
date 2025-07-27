@@ -9,7 +9,8 @@
     "agents"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:agents\"",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:agents\" \"npm run serve:landing\"",
+    "serve:landing": "node serve-landing.js",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev",
     "dev:agents": "cd agents && npm run dev",
@@ -20,6 +21,9 @@
     "install:frontend": "cd frontend && npm install",
     "install:backend": "cd backend && npm install",
     "install:agents": "cd agents && npm install"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

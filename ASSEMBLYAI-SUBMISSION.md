@@ -130,7 +130,7 @@ import assemblyai as aai
 
 class VoiceFlowAgent:
     def __init__(self):
-        aai.settings.api_key = "647ad0e892ef49179237bed4f62935b8"
+        aai.settings.api_key = "xyz"
         self.transcriber = aai.RealtimeTranscriber(
             sample_rate=16000,
             on_data=self.on_data,

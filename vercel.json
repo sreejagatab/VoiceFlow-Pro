@@ -29,6 +29,10 @@
       "dest": "/landing-page.html"
     },
     {
+      "src": "/app",
+      "dest": "/frontend/dist/index.html"
+    },
+    {
       "src": "/demo-video",
       "dest": "/VoiceFlow Pro - Business Automation Voice Agent - Google Chrome 2025-07-27 16-23-50.mp4"
     },

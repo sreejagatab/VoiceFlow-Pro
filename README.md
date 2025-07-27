@@ -9,7 +9,7 @@
 
 > **🌟 [MAIN ENTRY POINT: Landing Page](./landing-page.html)** - Open `landing-page.html` in your browser for the complete experience with Get Started button, demo video, verified case studies, and full technical specifications.
 
-> **🚀 [Get Started Immediately](http://localhost:3000)** - Jump directly to the live system interface.
+> **🚀 [Live System Interface](http://localhost:3000)** - Direct access to the conversation and analytics dashboards (after viewing landing page).
 
 VoiceFlow Pro is a comprehensive intelligent voice agent platform that automates complex business workflows through natural conversation. Built with enterprise-grade architecture featuring sub-400ms latency using LiveKit WebRTC and AssemblyAI's Universal-Streaming technology, advanced sentiment analysis, seamless human escalation, and real-time analytics.
 

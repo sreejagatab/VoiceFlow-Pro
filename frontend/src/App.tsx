@@ -3,6 +3,7 @@ import { LiveKitRoom, RoomAudioRenderer } from '@livekit/components-react'
 import { Room } from 'livekit-client'
 import '@livekit/components-styles'
 import ConversationDashboard from './components/ConversationDashboard'
+import SimpleAnalyticsDashboard from './components/SimpleAnalyticsDashboard'
 import './App.css'
 
 const LIVEKIT_URL = import.meta.env.VITE_LIVEKIT_URL || 'ws://localhost:7880'
@@ -13,6 +14,7 @@ function App() {
   const [connected, setConnected] = useState(false)
   const [room] = useState(() => new Room())
   const [loading, setLoading] = useState(false)
+  const [currentView, setCurrentView] = useState<'conversation' | 'analytics'>('conversation')
 
   const handleConnect = async () => {
     setLoading(true)
@@ -104,22 +106,66 @@ function App() {
           </div>
         </div>
       ) : (
-        <LiveKitRoom
-          video={false}
-          audio={true}
-          token={token}
-          serverUrl={LIVEKIT_URL}
-          room={room}
-          onConnected={() => console.log('Connected to LiveKit room')}
-          onDisconnected={() => {
-            setConnected(false)
-            setToken('')
-          }}
-          className="h-screen"
-        >
-          <ConversationDashboard />
-          <RoomAudioRenderer />
-        </LiveKitRoom>
+        <div className="h-screen flex flex-col">
+          {/* Dashboard Navigation */}
+          <div className="bg-white border-b border-gray-200 px-4 py-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <h1 className="text-xl font-semibold text-gray-900">VoiceFlow Pro</h1>
+                <div className="flex space-x-1">
+                  <button
+                    onClick={() => setCurrentView('conversation')}
+                    className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
+                      currentView === 'conversation'
+                        ? 'bg-blue-100 text-blue-700'
+                        : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    Conversation
+                  </button>
+                  <button
+                    onClick={() => setCurrentView('analytics')}
+                    className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
+                      currentView === 'analytics'
+                        ? 'bg-blue-100 text-blue-700'
+                        : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    Analytics
+                  </button>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <span className="text-sm text-gray-600">Connected</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Dashboard Content */}
+          <div className="flex-1">
+            {currentView === 'analytics' ? (
+              <SimpleAnalyticsDashboard />
+            ) : (
+              <LiveKitRoom
+                video={false}
+                audio={true}
+                token={token}
+                serverUrl={LIVEKIT_URL}
+                room={room}
+                onConnected={() => console.log('Connected to LiveKit room')}
+                onDisconnected={() => {
+                  setConnected(false)
+                  setToken('')
+                }}
+                className="h-full"
+              >
+                <ConversationDashboard />
+                <RoomAudioRenderer />
+              </LiveKitRoom>
+            )}
+          </div>
+        </div>
       )}
     </div>
   )
