@@ -6,6 +6,7 @@
 [![Get Started](https://img.shields.io/badge/🚀_Get_Started-Try_Now-ff69b4?style=for-the-badge)](http://localhost:3000)
 [![Demo Video](https://img.shields.io/badge/🎬_Demo_Video-Watch_Now-red?style=for-the-badge)](./VoiceFlow%20Pro%20-%20Business%20Automation%20Voice%20Agent%20-%20Google%20Chrome%202025-07-27%2016-23-50.mp4)
 [![Documentation](https://img.shields.io/badge/📚_Docs-Read_More-green?style=for-the-badge)](#documentation)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 
 > **🌟 [MAIN ENTRY POINT: Landing Page](./landing-page.html)** - Open `landing-page.html` in your browser for the complete experience with Get Started button, demo video, verified case studies, and full technical specifications.
 
@@ -728,6 +729,22 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ✅ **Production-Ready** with comprehensive testing, deployment, and monitoring  
 
 **Demonstrating how Universal-Streaming enables next-generation business automation with human-like conversation intelligence and enterprise reliability.**
+
+---
+
+## 📄 License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+### What this means:
+- ✅ **Commercial Use**: You can use this project for commercial purposes
+- ✅ **Modification**: You can modify and distribute modified versions
+- ✅ **Distribution**: You can distribute the original or modified versions
+- ✅ **Patent Use**: Express grant of patent rights from contributors
+- ✅ **Private Use**: You can use this project privately
+- ⚠️ **Trademark Use**: Does not grant trademark rights
+- ⚠️ **Liability**: Comes with no warranty or liability
+- ⚠️ **State Changes**: Must document significant changes made to the code
 
 ---
 
