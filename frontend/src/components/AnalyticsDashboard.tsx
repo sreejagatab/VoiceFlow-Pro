@@ -30,6 +30,7 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis
+  Radar
 } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -455,7 +456,7 @@ const AnalyticsDashboard: React.FC = () => {
               />
               <YAxis />
               <Tooltip 
-                labelFormatter={(value) => formatTimestamp(value as string)}
+                labelFormatter={(value: string) => formatTimestamp(value)}
                 formatter={(value: number, name: string) => [
                   name.includes('Rate') || name.includes('Quality') ? 
                     `${(value * 100).toFixed(1)}%` : 
@@ -495,7 +496,7 @@ const AnalyticsDashboard: React.FC = () => {
               />
               <YAxis domain={[-1, 1]} />
               <Tooltip 
-                labelFormatter={(value) => formatTimestamp(value as string)}
+                labelFormatter={(value: string) => formatTimestamp(value)}
                 formatter={(value: number, name: string) => [value.toFixed(2), name]}
               />
               <Legend />
@@ -610,9 +611,9 @@ const AnalyticsDashboard: React.FC = () => {
                   cx="50%"
                   cy="50%"
                   outerRadius={80}
-                  label={(entry) => `${entry.type}: ${entry.count}`}
+                  label={(entry: any) => `${entry.type}: ${entry.count}`}
                 >
-                  {escalationData.map((entry, index) => (
+                  {escalationData.map((entry: any, index: number) => (
                     <Cell key={`cell-${index}`} fill={Object.values(colors)[index % Object.values(colors).length]} />
                   ))}
                 </Pie>

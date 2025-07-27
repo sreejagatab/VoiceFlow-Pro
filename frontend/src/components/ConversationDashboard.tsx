@@ -5,8 +5,6 @@ import {
   Mic, 
   MicOff, 
   Volume2, 
-  VolumeX, 
-  Phone, 
   PhoneOff,
   TrendingUp,
   Calendar,
@@ -33,12 +31,12 @@ interface BusinessAction {
 export default function ConversationDashboard() {
   const room = useRoomContext()
   const connectionState = useConnectionState()
-  const participants = useRemoteParticipants()
+  const participants = useRemoteParticipants(); // eslint-disable-line @typescript-eslint/no-unused-vars
   
   const [isCallActive, setIsCallActive] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [currentScenario, setCurrentScenario] = useState<string>('onboarding')
-  const [conversationHistory, setConversationHistory] = useState<ConversationTurn[]>([])
+  const [conversationHistory] = useState<ConversationTurn[]>([])
   const [businessActions, setBusinessActions] = useState<BusinessAction[]>([])
   const [liveTranscript, setLiveTranscript] = useState('')
   const [agentResponse, setAgentResponse] = useState('')

@@ -16,7 +16,9 @@
     "react-dom": "^18.2.0",
     "lucide-react": "^0.263.1",
     "@headlessui/react": "^1.7.17",
-    "clsx": "^2.0.0"
+    "clsx": "^2.0.0",
+    "recharts": "^2.8.0",
+    "framer-motion": "^10.16.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

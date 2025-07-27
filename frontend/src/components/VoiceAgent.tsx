@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import { useConnectionState, useRoomContext, useTracks } from '@livekit/components-react'
 import { ConnectionState, Track } from 'livekit-client'
-import { Mic, MicOff, Volume2, VolumeX } from 'lucide-react'
+import { Mic, MicOff, Volume2 } from 'lucide-react'
 
 export default function VoiceAgent() {
   const room = useRoomContext()
   const connectionState = useConnectionState()
-  const tracks = useTracks([Track.Source.Microphone])
+  const tracks = useTracks([Track.Source.Microphone]); // eslint-disable-line @typescript-eslint/no-unused-vars
   
   const [isMuted, setIsMuted] = useState(false)
-  const [isListening, setIsListening] = useState(false)
-  const [transcript, setTranscript] = useState('')
+  const [isListening] = useState(false); // eslint-disable-line @typescript-eslint/no-unused-vars
+  const [transcript] = useState(''); // eslint-disable-line @typescript-eslint/no-unused-vars
   const [agentResponse, setAgentResponse] = useState('')
 
   useEffect(() => {
