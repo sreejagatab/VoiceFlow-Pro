@@ -1,0 +1,72 @@
+{
+  "version": 2,
+  "name": "voiceflow-pro",
+  "builds": [
+    {
+      "src": "landing-page.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "landing-styles.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "VoiceFlow Pro - Business Automation Voice Agent - Google Chrome 2025-07-27 16-23-50.mp4",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "case-studies/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.md",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/landing-page.html"
+    },
+    {
+      "src": "/demo-video",
+      "dest": "/VoiceFlow Pro - Business Automation Voice Agent - Google Chrome 2025-07-27 16-23-50.mp4"
+    },
+    {
+      "src": "/case-studies/(.*)",
+      "dest": "/case-studies/$1"
+    },
+    {
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|mp4|pdf|md))",
+      "dest": "/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    },
+    {
+      "source": "/.*\\.(mp4|webm|ogg|avi)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

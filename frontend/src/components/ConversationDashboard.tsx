@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useRoomContext, useConnectionState, useRemoteParticipants } from '@livekit/components-react'
 import { ConnectionState } from 'livekit-client'
-import { 
-  Mic, 
-  MicOff, 
-  Volume2, 
+import {
+  Mic,
+  MicOff,
+  Volume2,
   PhoneOff,
   TrendingUp,
   Calendar,
@@ -31,7 +31,7 @@ interface BusinessAction {
 export default function ConversationDashboard() {
   const room = useRoomContext()
   const connectionState = useConnectionState()
-  const participants = useRemoteParticipants(); // eslint-disable-line @typescript-eslint/no-unused-vars
+  const _participants = useRemoteParticipants()
   
   const [isCallActive, setIsCallActive] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
