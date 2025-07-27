@@ -1,10 +1,6 @@
 {
   "version": 2,
   "name": "voiceflow-pro",
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/landing-page.html"
-    }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
